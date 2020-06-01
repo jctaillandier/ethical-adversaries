@@ -146,7 +146,7 @@ def get_metrics(results, args, threshold, fraction):
 def train_and_evaluate(train_loader: DataLoader,
                        val_loader: DataLoader,
                        test_loader: DataLoader,
-                       device,
+                       device='cpu',
                        args,
                        input_shape,
                        grl_lambda=None,
@@ -282,7 +282,7 @@ def train_and_evaluate(train_loader: DataLoader,
 
 
 def main(args):
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = 'cpu'
     logging.debug("using device {} for pytorch.".format(device))
 
     # Make sure entire df is printed
