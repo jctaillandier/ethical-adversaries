@@ -146,7 +146,7 @@ def get_metrics(results, args, threshold, fraction):
 def train_and_evaluate(train_loader: DataLoader,
                        val_loader: DataLoader,
                        test_loader: DataLoader,
-                       device='cpu',
+                       device,
                        args,
                        input_shape,
                        grl_lambda=None,
