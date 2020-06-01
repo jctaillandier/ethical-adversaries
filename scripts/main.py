@@ -228,7 +228,7 @@ def train_and_evaluate(train_loader: DataLoader,
         t_prog.set_postfix({"epoch": epoch, "training_loss": training_loss,
                             "validation_loss": validation_loss}, refresh=False)  # print last metrics
 
-    if args.show_graphs:
+    if args.show_graphs == True:
         plt.plot(range(len(training_losses)), training_losses)
         plt.plot(range(len(validation_losses)), validation_losses)
         # plt.scatter(x_tensor, y_out.detach().numpy())
