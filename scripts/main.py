@@ -66,13 +66,13 @@ class Net(nn.Module):
         super(Net, self).__init__()
         # an affine operation: y = Wx + b
         self._grl_lambda = grl_lambda
-        self.fc1 = nn.Linear(input_shape, 32)
-        self.fc2 = nn.Linear(32, 32)
-        self.fc3 = nn.Linear(32, 32)
-        self.fc4 = nn.Linear(32, 1)
+        self.fc1 = nn.Linear(input_shape, 128)
+        self.fc2 = nn.Linear(128, 128)
+        self.fc3 = nn.Linear(128, 128)
+        self.fc4 = nn.Linear(128, 1)
         if self._grl_lambda != 0:
             self.grl = GradientReversal(grl_lambda)
-            self.fc5 = nn.Linear(32, 2)
+            self.fc5 = nn.Linear(128, 2)
         # self.grl = GradientReversal(100)
 
     def forward(self, x):

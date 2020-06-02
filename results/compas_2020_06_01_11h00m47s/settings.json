@@ -1,0 +1,1 @@
+{"epochs": 50, "iterations": 50, "batch_size": 128, "show_graphs": "False", "grl_lambda": 50, "attack_size": 10, "reset_attack": false, "dataset": "compas", "save_dir": "../results"}
