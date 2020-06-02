@@ -111,20 +111,18 @@ def transform_dataset_census(df):
 
     #remove examples with missing values
     df_replace = df.replace(to_replace="?",value=np.nan)
-    df_replace.dropna(inplace=True, axis=1)
+    df_replace.dropna(inplace=True, axis=0)
 
     if df_replace.shape == df.shape:
         raise AssertionError("The removal of na values failed")
 
     print(df_replace.shape)
-
     #transform other features
     #feature age to normalize
     encoded_feature = df_replace.to_numpy()[:, 0]
     mi = np.amin(encoded_feature)
     ma = np.amax(encoded_feature)
     encoded_feature = (encoded_feature - mi) / (ma - mi)
-    
     #df_binary_encoded is the data frame containing encoded features
     df_binary_encoded = pd.DataFrame(encoded_feature)
 
@@ -133,15 +131,13 @@ def transform_dataset_census(df):
         encod_feature = df_replace.iloc[:,i]
         encoded_feature = pd.get_dummies(encod_feature)
         df_binary_encoded = pd.concat([df_binary_encoded, pd.DataFrame(encoded_feature)], axis=1)
-
     #feature 8 and 9 are numerical
     for i in range(8,10):
-        encod_feature = df_replace.iloc[:,i].values
+        encod_feature = df_replace.iloc[:,i]
         mi = np.amin(encod_feature)
         ma = np.amax(encod_feature)
         encoded_feature = (encod_feature - mi) / (ma - mi)
         df_binary_encoded = pd.concat([df_binary_encoded, pd.DataFrame(encoded_feature)], axis=1)
-    
     #feature 10 and 11 are categorical
     for i in range(10,12):
         encod_feature = df_replace.iloc[:,i]
