@@ -136,7 +136,7 @@ def transform_dataset_census(df):
 
     #feature 8 and 9 are numerical
     for i in range(8,10):
-        encod_feature = df_replace.iloc[:,i]
+        encod_feature = df_replace.iloc[:,i].values
         mi = np.amin(encod_feature)
         ma = np.amax(encod_feature)
         encoded_feature = (encod_feature - mi) / (ma - mi)
